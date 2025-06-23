@@ -1,0 +1,151 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/myTitle"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="UPS APP"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:background="#003772"
+        android:gravity="center"
+        android:padding="20dp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:layout_marginTop="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/welcome"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Welcome"
+        android:textSize="20sp"
+        android:textColor="#000000"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:layout_marginTop="95dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <EditText
+        android:id="@+id/myName"
+        android:layout_width="250dp"
+        android:layout_marginTop="150dp"
+        android:layout_height="40dp"
+        android:background="#e0d8d7"
+        android:hint="Enter Name"
+        android:textSize="20sp"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/myLastname"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:background="#e0d8d7"
+        android:layout_marginTop="200dp"
+        android:hint="Enter lastname"
+        android:textSize="20sp"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/myAge"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:background="#e0d8d7"
+        android:inputType="number"
+        android:layout_marginTop="250dp"
+        android:hint="Enter age in years"
+        android:textSize="20sp"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/myEdit"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:background="#e0d8d7"
+        android:layout_marginTop="300dp"
+        android:hint="Enter Bachelor's Degree"
+        android:textSize="20sp"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/mySemester"
+        android:layout_width="250dp"
+        android:layout_height="40dp"
+        android:background="#e0d8d7"
+        android:layout_marginTop="350dp"
+        android:hint="Enter No. Of Semester"
+        android:inputType="number"
+        android:textSize="20sp"
+        android:padding="5dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/myButton"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#003772"
+        android:textSize="20sp"
+        android:text="Submit"
+        android:textAllCaps="true"
+        android:layout_marginTop="400dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <Button
+        android:id="@+id/myClear"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#c93006"
+        android:textSize="20sp"
+        android:text="Clear"
+        android:textAllCaps="true"
+        android:layout_marginTop="450dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <TextView
+        android:id="@+id/myText"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:text="Student Data UPS"
+        android:textSize="20sp"
+        android:textColor="#ffffff"
+        android:background="#014f7f"
+        android:padding="20dp"
+        android:textStyle="bold"
+        android:textAllCaps="true"
+        android:layout_marginTop="500dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
