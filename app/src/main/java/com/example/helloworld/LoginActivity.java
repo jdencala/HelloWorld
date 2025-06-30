@@ -13,10 +13,9 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class LoginActivity extends AppCompatActivity {
+import java.util.Map;
 
-    private static final String HARDCODED_USERNAME = "jencalada";
-    private static final String HARDCODED_PASSWORD = "12345";
+public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,22 +30,46 @@ public class LoginActivity extends AppCompatActivity {
         Button loginBtn = findViewById(R.id.loginBtn);
         EditText user = findViewById(R.id.user);
         EditText password = findViewById(R.id.password);
+
+        //Get user credentials Map
+        Map<String, String> storedCredentials = MyApplication.userCredentials;
+
         loginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String userString = user.getText().toString();
-                String passwordString = password.getText().toString();
-                if(userString.trim().equalsIgnoreCase(HARDCODED_USERNAME) &&
-                        passwordString.trim().equalsIgnoreCase(HARDCODED_PASSWORD)) {
-                    Toast.makeText(LoginActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.putExtra(MainActivity.USERNAME, userString);
-                    startActivity(intent);
-                    finish();
+                String userSubmitted = user.getText().toString();
+                String passwordSubmitted = password.getText().toString();
+
+                if((userSubmitted != null && !userSubmitted.isBlank()) &&
+                        passwordSubmitted != null && !passwordSubmitted.isBlank()){
+                    if(storedCredentials.containsKey(userSubmitted)){
+                        String storedPassword = storedCredentials.get(userSubmitted);
+                        if(storedPassword.equals(passwordSubmitted)){
+                            Toast.makeText(LoginActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
+                            Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                            intent.putExtra(MainActivity.USERNAME, userSubmitted);
+                            startActivity(intent);
+                            finish();
+                        } else {
+                            Toast.makeText(LoginActivity.this, "INVALID CREDENTIALS", Toast.LENGTH_SHORT).show();
+                        }
+                    } else {
+                        Toast.makeText(LoginActivity.this, "USER DOES NOT EXISTS", Toast.LENGTH_SHORT).show();
+                    }
                 } else {
-                    Toast.makeText(LoginActivity.this, "INVALID CREDENTIALS", Toast.LENGTH_SHORT).show();
+                    validateErrorMessage(user, userSubmitted, "user");
+                    validateErrorMessage(password, passwordSubmitted, "password");
+                    Toast.makeText(LoginActivity.this, "USER AND PASSWORD CANNOT BE EMPTY", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+            private void validateErrorMessage(EditText editText, String text, String fieldName){
+                if(text == null || text.isBlank()) {
+                    editText.setError(fieldName + " cannot be empty");
                 }
             }
         });
+
+
     }
 }
