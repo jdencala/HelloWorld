@@ -30,13 +30,13 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+//        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_login);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
-        });
+//        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
+//            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
+//            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
+//            return insets;
+//        });
         Button loginBtn = findViewById(R.id.loginBtn);
         EditText user = findViewById(R.id.user);
         EditText password = findViewById(R.id.password);
@@ -115,13 +115,7 @@ public class LoginActivity extends AppCompatActivity {
 
                     responseCode = urlConnection.getResponseCode();
 
-                    if(responseCode == 200){
-                        Toast.makeText(LoginActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
-                        Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                        intent.putExtra(MainActivity.USERNAME, username);
-                        startActivity(intent);
-                        finish();
-                    }
+                    handleResponseCode(responseCode, username);
 
                 }catch(Exception exception){
                     System.out.println("Exception" + exception.getMessage());
@@ -138,5 +132,25 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         }).start();
+    }
+
+    private void handleResponseCode(int responseCode, String username) {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                if(responseCode == 200){
+                    Toast.makeText(LoginActivity.this, "LOGIN SUCCESSFUL", Toast.LENGTH_SHORT).show();
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra(MainActivity.USERNAME, username);
+                    startActivity(intent);
+                    finish();
+                }
+
+                if(responseCode == 401){
+                    Toast.makeText(LoginActivity.this, "WRONG CREDENTIALS", Toast.LENGTH_SHORT).show();
+                }
+
+            }
+        });
     }
 }
